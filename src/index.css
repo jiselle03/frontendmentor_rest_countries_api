@@ -1,13 +1,197 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+}
+
+/* DARK MODE */
+body.dark {
+  background-color: hsl(207, 26%, 17%);
+}
+
+body.dark * {
+  color: hsl(0, 0%, 100%);
+}
+
+body.dark header,
+body.dark .card,
+body.dark button {
+  background-color: hsl(209, 23%, 22%);
+}
+
+body.dark header,
+body.dark .card,
+body.dark button {
+  box-shadow: 3px 3px 8px -5px #000;
+}
+
+/* LIGHT MODE */
+body.light {
+  background-color: hsl(0, 0%, 98%);
+}
+
+body.light * {
+  color: hsl(200, 15%, 8%);
+}
+
+body.light header,
+body.light .card,
+body.light button {
+  background-color: hsl(0, 0%, 100%);
+}
+
+body.light input {
+  color: hsl(0, 0%, 52%);
+}
+
+body.light header,
+body.light .card,
+body.light button {
+  box-shadow: 3px 3px 8px -5px #ccc;
+}
+
+/* SPACING */
+header * {
+  margin: 1em 3em;
+}
+
+main {
+  padding: 1rem 3rem;
+  min-height: 85vh;
+}
+
+.flag,
+.summary {
+  height: 50%;
+}
+
+.large,
+.info {
+  width: 50%;
+}
+
+.summary {
+  margin: 1rem 1.5rem;
+}
+
+.info {
+  margin: 0 5em;
+}
+
+i {
+  margin: auto 0.25rem;
+}
+
+h3 {
+  margin: 0.5rem auto;
+}
+
+table {
+  margin-bottom: 3rem;
+}
+
+table {
+  width: 40vw;
+}
+
+/* TYPOGRAPHY */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p {
+  font-weight: 300;
+}
+
+header > h1 {
+  font-size: 16px;
+}
+
+.home p {
+  font-size: 14px;
+}
+
+.details p,
+.home h6,
+button {
+  font-size: 16px;
+}
+
+h6,
+strong {
+  font-weight: 800;
+  margin: 0 auto;
+}
+
+.attribution { 
+  font-size: 11px; 
+  text-align: center;
+}
+
+/* FLEXBOX */
+header,
+.countries.home,
+.country.details {
+  display: flex;
+  flex-direction: row;
+}
+
+header,
+.country.details {
+  justify-content: space-between;
+}
+
+.countries.home {
+  flex-wrap: wrap;
+}
+
+/* CARDS */
+.card {
+  width: 250px;
+  margin: 2em;
+  border-radius: 5px;
+}
+
+/* OTHER */
+.mode:hover,
+a:hover {
+  cursor: pointer;
+}
+
+.flag > img {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.flag.large > img {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* BUTTON */
+button {
+  border: none;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  margin: 0.5em;
+}
+
+button.back {
+  margin: 3rem auto;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+@media (min-width: 376px) {
+  
 }
