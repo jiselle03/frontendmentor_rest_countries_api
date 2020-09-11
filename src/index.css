@@ -192,6 +192,44 @@ button:hover {
   cursor: pointer;
 }
 
+/* SubHeader */
+.subheader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* Dropdown Container */
+.filter {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content p {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Show dropdown menu on hover */
+.filter:hover .dropdown-content {display: block;}
+
 @media (min-width: 376px) {
   
 }
