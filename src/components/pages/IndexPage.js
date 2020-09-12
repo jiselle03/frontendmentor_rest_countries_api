@@ -25,7 +25,8 @@ const IndexPage = () => {
         <>
             <div className="subheader">
                 <div className="search">
-                    Search
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Search for a country..." />
                 </div>
 
                 <div className="filter">
