@@ -71,7 +71,7 @@ const ShowPage = props => {
                         </tbody>
                     </table>
                     
-                    {borders && (
+                    {borders.length > 0 && (
                         <p>
                             <strong>Border Countries: </strong>
                             {borders.map(code => (
