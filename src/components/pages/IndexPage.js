@@ -11,10 +11,14 @@ const IndexPage = () => {
 
     const getAll = () => axios.get(`${baseUrl}/all`);
     const getRegion = region => axios.get(`${baseUrl}/region/${region}`);
-    const search = keyword => axios.get(`${baseUrl}/name/${keyword}`);
+    const search = () => {
+        const value = document.querySelector("input").value;
+        console.log("HELLO")
+        // keyword => axios.get(`${baseUrl}/name/${keyword}`)
+    };
 
     const filterByRegion = region => {
-        getRegion(region).then(countries => setCountries(countries.data));
+        getRegion(region).then(countries => console.log(countries.data));
     };
 
     useEffect(() => {
@@ -25,8 +29,13 @@ const IndexPage = () => {
         <>
             <div className="subheader">
                 <div className="search">
-                    <i class="fa fa-search"></i>
-                    <input type="text" placeholder="Search for a country..." />
+                    <i className="fa fa-search"></i>
+                    <input 
+                        type="text" 
+                        placeholder="Search for a country..." 
+                        // value=" "
+                        onKeyPress={() => search}
+                    />
                 </div>
 
                 <div className="filter">
