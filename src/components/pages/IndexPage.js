@@ -4,29 +4,30 @@ import axios from 'axios';
 
 import { baseUrl } from '../../config';
 import Flag from '../Flag';
-import DropdownContent from '../DropdownContent';
 
 const IndexPage = () => {
     const [countries, setCountries] = useState([]);
     const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
-    const getAll = () => axios.get(`${baseUrl}/all`);
-    const getRegion = region => axios.get(`${baseUrl}/region/${region}`);
+    const getCountries = region => {
+        if (!region) {
+            return axios.get(`${baseUrl}/all`)
+        } else {
+            return axios.get(`${baseUrl}/region/${region}`)
+        };
+    };
+
     const search = event => {
-        const value = document.querySelector("input").value;
-        console.log(event.value)
+        // const value = document.querySelector("input").value;
         // keyword => axios.get(`${baseUrl}/name/${keyword}`)
     };
 
-    const filterByRegion = region => {
-        getRegion(region).then(countries => {
-            console.log(countries.data)
-            // setCountries(region);
-        });
+    const filterByRegion = (event, region) => {
+        getCountries(region.toLowerCase()).then(countries => setCountries(countries.data));
     };
 
     useEffect(() => {
-        getAll().then(countries => setCountries(countries.data));
+        getCountries().then(countries => setCountries(countries.data));
     }, [countries]);
 
     return(
@@ -45,11 +46,11 @@ const IndexPage = () => {
                     <button className="dropbtn">Filter By Region</button>
                     <div className="dropdown-content">
                         {regions.map(region => (
-                            <DropdownContent 
+                            <p             
                                 key={region} 
-                                region={region} 
-                                filterByRegion={filterByRegion}
-                            />
+                                className="region"
+                                onClick={event => filterByRegion(event, region)}
+                            >{region}</p>
                         ))}
                     </div>
                 </div>
