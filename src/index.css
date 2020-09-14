@@ -71,7 +71,11 @@ body.light .dropdown-content {
 
 /* SPACING */
 header * {
-  margin: 1em 3em;
+  margin: 1rem 3rem;
+}
+
+.subheader {
+  padding: 1rem;
 }
 
 main {
@@ -151,14 +155,11 @@ strong {
 
 /* FLEXBOX */
 header,
+.subheader,
 .countries.home,
 .country.details {
   display: flex;
   flex-direction: row;
-}
-
-header,
-.country.details {
   justify-content: space-between;
 }
 
@@ -166,18 +167,19 @@ header,
   flex-wrap: wrap;
 }
 
-.subheader {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
 /* CARDS */
 .card {
   width: 250px;
   height: 325px;
-  margin: 1rem;
   border-radius: 5px;
+}
+
+.countries.home > * {
+  margin: 1rem 0 0 1rem;
+}
+
+.countries.home {
+  margin: -1rem 0 0 -1rem;
 }
 
 /* OTHER */
@@ -269,7 +271,6 @@ input {
 .filter:hover .dropdown-content { 
   display: block;
 }
-
 
 @media (min-width: 376px) {
   
