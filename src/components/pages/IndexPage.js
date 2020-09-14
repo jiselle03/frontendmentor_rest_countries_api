@@ -4,21 +4,25 @@ import axios from 'axios';
 
 import { baseUrl } from '../../config';
 import Flag from '../Flag';
+import DropdownContent from '../DropdownContent';
 
 const IndexPage = () => {
     const [countries, setCountries] = useState([]);
-    const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
+    const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
     const getAll = () => axios.get(`${baseUrl}/all`);
     const getRegion = region => axios.get(`${baseUrl}/region/${region}`);
-    const search = () => {
+    const search = event => {
         const value = document.querySelector("input").value;
-        console.log("HELLO")
+        console.log(event.value)
         // keyword => axios.get(`${baseUrl}/name/${keyword}`)
     };
 
     const filterByRegion = region => {
-        getRegion(region).then(countries => console.log(countries.data));
+        getRegion(region).then(countries => {
+            console.log(countries.data)
+            // setCountries(region);
+        });
     };
 
     useEffect(() => {
@@ -33,8 +37,7 @@ const IndexPage = () => {
                     <input 
                         type="text" 
                         placeholder="Search for a country..." 
-                        // value=" "
-                        onKeyPress={() => search}
+                        onInput={() => search}
                     />
                 </div>
 
@@ -42,10 +45,11 @@ const IndexPage = () => {
                     <button className="dropbtn">Filter By Region</button>
                     <div className="dropdown-content">
                         {regions.map(region => (
-                            <p 
-                                key={region}
-                                // onClick={filterByRegion(region.toLowerCase())}
-                            >{region}</p>
+                            <DropdownContent 
+                                key={region} 
+                                region={region} 
+                                filterByRegion={filterByRegion}
+                            />
                         ))}
                     </div>
                 </div>
@@ -62,8 +66,12 @@ const IndexPage = () => {
                             <div className="summary">
                                 <h6>{country.name}</h6>
                                 <p><strong>Population:</strong> {country.population}</p>
-                                <p><strong>Region:</strong> {country.region}</p>
-                                <p><strong>Capital:</strong> {country.capital}</p>
+                                {country.region && (
+                                    <p><strong>Region:</strong> {country.region}</p>
+                                )}
+                                {country.capital && (
+                                    <p><strong>Capital:</strong> {country.capital}</p>
+                                )}
                             </div>
                         </div>
                     </Link>
