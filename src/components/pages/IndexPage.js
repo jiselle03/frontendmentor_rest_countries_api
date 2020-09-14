@@ -38,6 +38,7 @@ const IndexPage = () => {
         <>
             <div className="subheader">
                 <div className="search">
+                    <hr />
                     <i className="fa fa-search"></i>
                     <input 
                         type="text" 
@@ -48,6 +49,7 @@ const IndexPage = () => {
 
                 <div className="filter">
                     <button className="dropbtn">Filter By Region <i class="fas fa-chevron-down"></i></button>
+                    <hr />
                     <div className="dropdown-content">
                         {regions.map(region => (
                             <p             

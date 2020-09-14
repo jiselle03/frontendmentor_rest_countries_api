@@ -92,6 +92,20 @@ h1 {
   align-self: center;
 }
 
+.search,
+.dropbtn { 
+  margin: 2rem;
+  margin-bottom: 0;
+}
+
+.search {
+  padding: 0 16px;
+}
+
+.dropbtn {
+  padding: 16px;
+}
+
 .countries.home {
   margin: -1rem;
 }
@@ -184,6 +198,10 @@ header > * {
   width: auto;
 }
 
+.subheader {
+  align-items: center;
+}
+
 .countries.home {
   flex-wrap: wrap;
 }
@@ -242,17 +260,11 @@ input {
   width: 15em;
   display: flex;
   align-items: center;
-  padding: 0 16px;
-  margin: 2rem;
-  margin-bottom: 0;
   border-radius: 5px;
 }
 
 /* Dropdown Button */
 .dropbtn {
-  padding: 16px;
-  margin: 2rem;
-  margin-bottom: 0;
   font-size: 14px;
   border: none;
 }
@@ -268,9 +280,13 @@ input {
 .dropdown-content {
   display: none;
   position: absolute;
-  min-width: 130px;
+  min-width: 155px;
   margin: 5.25rem auto;
   z-index: 1;
+}
+
+hr {
+  opacity: 0;
 }
 
 /* Links inside the dropdown */
@@ -321,6 +337,7 @@ input {
   .search,
   .dropbtn {
     margin: 12px;
+    margin-bottom: 0;
   }
 
   .search {
