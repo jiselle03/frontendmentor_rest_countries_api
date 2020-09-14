@@ -38,7 +38,6 @@ const IndexPage = () => {
         <>
             <div className="subheader">
                 <div className="search">
-                    <hr />
                     <i className="fa fa-search"></i>
                     <input 
                         type="text" 

@@ -92,14 +92,15 @@ h1 {
   align-self: center;
 }
 
-.search,
 .dropbtn { 
   margin: 2rem;
   margin-bottom: 0;
 }
 
 .search {
-  padding: 0 16px;
+  padding: auto 16px;
+  margin: 2rem;
+  margin-bottom: 2px;
 }
 
 .dropbtn {
@@ -194,6 +195,10 @@ header,
   justify-content: space-between;
 }
 
+.subheader {
+  align-items: flex-end;
+}
+
 header > * {
   width: auto;
 }
@@ -286,6 +291,8 @@ input {
 }
 
 hr {
+  margin: 0;
+  height: 2px;
   opacity: 0;
 }
 
@@ -342,7 +349,6 @@ hr {
 
   .search {
     width: 85%;
-    margin: auto;
   }
 
 }
