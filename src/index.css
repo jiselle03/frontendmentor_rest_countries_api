@@ -182,7 +182,8 @@ header,
 
 /* OTHER */
 .mode:hover,
-a:hover {
+a:hover,
+.region:hover {
   cursor: pointer;
 }
 
