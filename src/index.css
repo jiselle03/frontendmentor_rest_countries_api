@@ -32,7 +32,8 @@ body.dark .dropdown-content {
 
 body.dark header,
 body.dark .card,
-body.dark button,
+body.dark .dropbtn,
+body.dark .border-country,
 body.dark .search,
 body.dark .dropdown-content {
   box-shadow: 3px 3px 8px -5px #000;
@@ -61,7 +62,8 @@ body.light input {
 
 body.light header,
 body.light .card,
-body.light button,
+body.light .dropbtn,
+body.light .border-country,
 body.light .search,
 body.light .dropdown-content {
   box-shadow: 3px 3px 8px -5px #ccc;
