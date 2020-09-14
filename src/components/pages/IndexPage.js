@@ -9,22 +9,25 @@ const IndexPage = () => {
     const [countries, setCountries] = useState([]);
     const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
-    const getCountries = region => {
+    const getCountries = (region, keyword) => {
         if (region) {
             return axios.get(`${baseUrl}/region/${region}`);
+        } else if (keyword) {
+            return axios.get(`${baseUrl}/name/${keyword}`);
         } else {
             return axios.get(`${baseUrl}/all`);
         };
     };
 
     const search = event => {
-        // const value = document.querySelector("input").value;
-        // keyword => axios.get(`${baseUrl}/name/${keyword}`)
+        event.preventDefault();
+        const keyword = document.querySelector("input").value;
+        getCountries(null, keyword).then(countries => setCountries(countries.data));
     };
 
     const filterByRegion = (event, region) => {
         event.preventDefault();
-        getCountries(region.toLowerCase()).then(countries => setCountries(countries.data));
+        getCountries(region.toLowerCase(), null).then(countries => setCountries(countries.data));
     };
 
     useEffect(() => {
@@ -39,7 +42,7 @@ const IndexPage = () => {
                     <input 
                         type="text" 
                         placeholder="Search for a country..." 
-                        onInput={() => search}
+                        onInput={event => search(event)}
                     />
                 </div>
 
