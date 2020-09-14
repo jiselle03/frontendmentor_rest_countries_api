@@ -5,8 +5,13 @@ code {
     monospace;
 }
 
+html {
+  min-width: 100%;
+}
+
 body {
   margin: 0;
+  min-width: 100%;
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 600;
 }
@@ -81,6 +86,10 @@ header * {
 main {
   padding: 1rem 3rem;
   min-height: 85vh;
+}
+
+h1 { 
+  align-self: center;
 }
 
 .countries.home {
@@ -169,6 +178,10 @@ header,
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+header > * {
+  width: auto;
 }
 
 .countries.home {
@@ -273,6 +286,46 @@ input {
   display: block;
 }
 
-@media (min-width: 376px) {
+
+/* MOBILE VIEW */
+@media (max-width: 376px) {
+  header,
+  .subheader,
+  .countries.home {
+    padding: 12px;
+  }
+
+  header {
+    width: 100%;
+  }
+
+  header > * {
+    margin: 12px;
+    width: 50%;
+  }
   
+  .subheader,
+  .countries.home {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .subheader {
+    align-items: flex-start;
+  }
+
+  .countries.home {
+    align-items: center;
+  }
+
+  .search,
+  .dropbtn {
+    margin: 12px;
+  }
+
+  .search {
+    width: 85%;
+    margin: auto;
+  }
+
 }
