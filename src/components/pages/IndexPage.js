@@ -47,7 +47,7 @@ const IndexPage = () => {
                 </div>
 
                 <div className="filter">
-                    <button className="dropbtn">Filter By Region</button>
+                    <button className="dropbtn">Filter By Region <i class="fas fa-chevron-down"></i></button>
                     <div className="dropdown-content">
                         {regions.map(region => (
                             <p             
