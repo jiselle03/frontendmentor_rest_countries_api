@@ -10,10 +10,10 @@ const IndexPage = () => {
     const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
     const getCountries = region => {
-        if (!region) {
-            return axios.get(`${baseUrl}/all`)
+        if (region) {
+            return axios.get(`${baseUrl}/region/${region}`);
         } else {
-            return axios.get(`${baseUrl}/region/${region}`)
+            return axios.get(`${baseUrl}/all`);
         };
     };
 
@@ -23,12 +23,13 @@ const IndexPage = () => {
     };
 
     const filterByRegion = (event, region) => {
+        event.preventDefault();
         getCountries(region.toLowerCase()).then(countries => setCountries(countries.data));
     };
 
     useEffect(() => {
         getCountries().then(countries => setCountries(countries.data));
-    }, [countries]);
+    }, []);
 
     return(
         <>
