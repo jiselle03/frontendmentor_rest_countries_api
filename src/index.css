@@ -6,12 +6,13 @@ code {
 }
 
 html {
-  min-width: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
-  min-width: 100%;
+  width: 100%;
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 600;
 }
