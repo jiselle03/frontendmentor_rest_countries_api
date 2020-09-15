@@ -38,6 +38,7 @@ body.dark .dropdown-content {
 body.dark header,
 body.dark .card,
 body.dark .dropbtn,
+body.dark .back,
 body.dark .border-country,
 body.dark .search,
 body.dark .dropdown-content {
@@ -68,6 +69,7 @@ body.light input {
 body.light header,
 body.light .card,
 body.light .dropbtn,
+body.light .back,
 body.light .border-country,
 body.light .search,
 body.light .dropdown-content {
@@ -92,7 +94,8 @@ h1 {
   align-self: center;
 }
 
-.dropbtn { 
+.dropbtn,
+.back { 
   margin: 2rem;
   margin-bottom: 0;
 }
@@ -247,10 +250,6 @@ button {
   margin: 0.5em;
 }
 
-button.back {
-  margin: 3rem auto;
-}
-
 button:hover {
   cursor: pointer;
 }
@@ -309,13 +308,22 @@ hr {
   display: block;
 }
 
+.mobile {
+  display: none;
+}
 
 /* MOBILE VIEW */
 @media (max-width: 376px) {
   header,
   .subheader,
-  .countries.home {
+  .countries.home,
+  .country.details,
+  .info {
     padding: 12px;
+  }
+
+  .mobile {
+    display: block;
   }
 
   header {
@@ -328,7 +336,8 @@ hr {
   }
   
   .subheader,
-  .countries.home {
+  .countries.home,
+  .country.details {
     display: flex;
     flex-direction: column;
   }
@@ -347,8 +356,30 @@ hr {
     margin-bottom: 0;
   }
 
-  .search {
+  .search,
+  .flag,
+  .info {
     width: 85%;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  .info {
+    margin: 2rem auto;
+  }
+
+  thead th:not(:first-child) {
+    display: none;
+  }
+
+  td, th {
+      display: block;
+  }
+
+  td[data-th]:before  {
+      content: attr(data-th);
   }
 
 }
