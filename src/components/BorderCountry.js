@@ -9,7 +9,7 @@ const BorderCountry = props => {
     }, [code]);
 
     return (
-        <button>{country.name}</button>
+        <button className="border-country">{country.name}</button>
     );
 };
 

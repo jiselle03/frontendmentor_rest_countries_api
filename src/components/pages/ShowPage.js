@@ -34,7 +34,7 @@ const ShowPage = props => {
 
     return isLoading ? <p>Fetching data...</p> :
     (
-        <main>
+        <>
             <Link to="/">
                 <button className="back">
                     <i className="fas fa-arrow-left"></i>
@@ -42,7 +42,7 @@ const ShowPage = props => {
                 </button>
             </Link>
         
-            <div className="country details">
+            <main className="country details">
                 <Flag url={flag} large />
 
                 <div className="info">
@@ -71,9 +71,10 @@ const ShowPage = props => {
                         </tbody>
                     </table>
                     
-                    {borders && (
+                    {borders.length > 0 && (
                         <p>
                             <strong>Border Countries: </strong>
+                            <br className="mobile" />
                             {borders.map(code => (
                                 <Link key={code} to={`/${code}`}>
                                     <BorderCountry 
@@ -86,8 +87,8 @@ const ShowPage = props => {
                     )}
                     
                 </div>
-            </div>
-        </main>
+            </main>
+        </>
     );
 };
 
