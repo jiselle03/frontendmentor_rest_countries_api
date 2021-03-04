@@ -7,34 +7,54 @@ import Flag from '../Flag';
 
 const IndexPage = () => {
     const [countries, setCountries] = useState([]);
-    const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"]
+    const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
-    const getAll = () => axios.get(`${baseUrl}/all`);
-    const getRegion = region => axios.get(`${baseUrl}/region/${region}`);
-    const search = keyword => axios.get(`${baseUrl}/name/${keyword}`);
+    const getCountries = (region, keyword) => {
+        if (region) {
+            return axios.get(`${baseUrl}/region/${region}`);
+        } else if (keyword) {
+            return axios.get(`${baseUrl}/name/${keyword}`);
+        } else {
+            return axios.get(`${baseUrl}/all`);
+        };
+    };
 
-    const filterByRegion = region => {
-        getRegion(region).then(countries => setCountries(countries.data));
+    const search = event => {
+        event.preventDefault();
+        const keyword = document.querySelector("input").value;
+        getCountries(null, keyword).then(countries => setCountries(countries.data));
+    };
+
+    const filterByRegion = (event, region) => {
+        event.preventDefault();
+        getCountries(region.toLowerCase(), null).then(countries => setCountries(countries.data));
     };
 
     useEffect(() => {
-        getAll().then(countries => setCountries(countries.data));
-    }, [countries]);
+        getCountries().then(countries => setCountries(countries.data));
+    }, []);
 
     return(
         <>
             <div className="subheader">
                 <div className="search">
-                    Search
+                    <i className="fa fa-search"></i>
+                    <input 
+                        type="text" 
+                        placeholder="Search for a country..." 
+                        onInput={event => search(event)}
+                    />
                 </div>
 
                 <div className="filter">
-                    <button className="dropbtn">Filter By Region</button>
+                    <button className="dropbtn">Filter By Region <i class="fas fa-chevron-down"></i></button>
+                    <hr />
                     <div className="dropdown-content">
                         {regions.map(region => (
-                            <p 
-                                key={region}
-                                // onClick={filterByRegion(region.toLowerCase())}
+                            <p             
+                                key={region} 
+                                className="region"
+                                onClick={event => filterByRegion(event, region)}
                             >{region}</p>
                         ))}
                     </div>
@@ -52,8 +72,12 @@ const IndexPage = () => {
                             <div className="summary">
                                 <h6>{country.name}</h6>
                                 <p><strong>Population:</strong> {country.population}</p>
-                                <p><strong>Region:</strong> {country.region}</p>
-                                <p><strong>Capital:</strong> {country.capital}</p>
+                                {country.region && (
+                                    <p><strong>Region:</strong> {country.region}</p>
+                                )}
+                                {country.capital && (
+                                    <p><strong>Capital:</strong> {country.capital}</p>
+                                )}
                             </div>
                         </div>
                     </Link>

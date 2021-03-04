@@ -5,8 +5,14 @@ code {
     monospace;
 }
 
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
+  width: 100%;
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 600;
 }
@@ -16,19 +22,27 @@ body.dark {
   background-color: hsl(207, 26%, 17%);
 }
 
-body.dark * {
+body.dark *,
+body.dark ::placeholder {
   color: hsl(0, 0%, 100%);
 }
 
 body.dark header,
 body.dark .card,
-body.dark button {
+body.dark button,
+body.dark .search,
+body.dark input,
+body.dark .dropdown-content {
   background-color: hsl(209, 23%, 22%);
 }
 
 body.dark header,
 body.dark .card,
-body.dark button {
+body.dark .dropbtn,
+body.dark .back,
+body.dark .border-country,
+body.dark .search,
+body.dark .dropdown-content {
   box-shadow: 3px 3px 8px -5px #000;
 }
 
@@ -43,7 +57,9 @@ body.light * {
 
 body.light header,
 body.light .card,
-body.light button {
+body.light button,
+body.light .search,
+body.light .dropdown-content {
   background-color: hsl(0, 0%, 100%);
 }
 
@@ -53,18 +69,54 @@ body.light input {
 
 body.light header,
 body.light .card,
-body.light button {
+body.light .dropbtn,
+body.light .back,
+body.light .border-country,
+body.light .search,
+body.light .dropdown-content {
   box-shadow: 3px 3px 8px -5px #ccc;
 }
 
 /* SPACING */
 header * {
-  margin: 1em 3em;
+  margin: 1rem 3rem;
+}
+
+.subheader {
+  padding: 0 1rem;
 }
 
 main {
   padding: 1rem 3rem;
   min-height: 85vh;
+}
+
+h1 { 
+  align-self: center;
+}
+
+.dropbtn,
+.back { 
+  margin: 2rem;
+  margin-bottom: 0;
+}
+
+.search {
+  padding: auto 16px;
+  margin: 2rem;
+  margin-bottom: 2px;
+}
+
+.dropbtn {
+  padding: 16px;
+}
+
+.countries.home {
+  margin: -1rem;
+}
+
+.card {
+  margin: 1rem;
 }
 
 .flag,
@@ -109,6 +161,7 @@ a {
 
 p {
   font-weight: 300;
+  margin: 0.5em auto;
 }
 
 header > h1 {
@@ -128,7 +181,7 @@ button {
 h6,
 strong {
   font-weight: 800;
-  margin: 0 auto;
+  margin: 0.5rem auto;
 }
 
 .attribution { 
@@ -138,15 +191,24 @@ strong {
 
 /* FLEXBOX */
 header,
+.subheader,
 .countries.home,
 .country.details {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
-header,
-.country.details {
-  justify-content: space-between;
+.subheader {
+  align-items: flex-end;
+}
+
+header > * {
+  width: auto;
+}
+
+.subheader {
+  align-items: center;
 }
 
 .countries.home {
@@ -156,14 +218,19 @@ header,
 /* CARDS */
 .card {
   width: 250px;
-  margin: 2em;
+  height: 325px;
   border-radius: 5px;
 }
 
 /* OTHER */
 .mode:hover,
-a:hover {
+a:hover,
+.region:hover {
   cursor: pointer;
+}
+
+.flag {
+  margin: 2rem auto;
 }
 
 .flag > img {
@@ -184,52 +251,136 @@ button {
   margin: 0.5em;
 }
 
-button.back {
-  margin: 3rem auto;
-}
-
 button:hover {
   cursor: pointer;
 }
 
-/* SubHeader */
-.subheader {
+/* Search Bar */
+input {
+  border: none;
+}
+
+.search {
+  height: 3em;
+  width: 15em;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
 }
 
 /* Dropdown Button */
 .dropbtn {
-  padding: 16px;
-  font-size: 16px;
+  font-size: 14px;
   border: none;
 }
 
 /* Dropdown Container */
 .filter {
-  position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
   position: absolute;
-  min-width: 160px;
+  min-width: 155px;
+  margin: 5.25rem auto;
   z-index: 1;
+}
+
+hr {
+  margin: 0;
+  height: 2px;
+  opacity: 0;
 }
 
 /* Links inside the dropdown */
 .dropdown-content p {
-  padding: 12px 16px;
+  padding: 0px 16px;
   text-decoration: none;
   display: block;
+  font-size: 14px;
 }
 
 /* Show dropdown menu on hover */
-.filter:hover .dropdown-content {display: block;}
+.filter:hover .dropdown-content { 
+  display: block;
+}
 
-@media (min-width: 376px) {
+.mobile {
+  display: none;
+}
+
+/* MOBILE VIEW */
+@media (max-width: 376px) {
+  header,
+  .subheader,
+  .countries.home,
+  .country.details,
+  .info {
+    padding: 12px;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  header {
+    width: 100%;
+  }
+
+  header > * {
+    margin: 12px;
+    width: 50%;
+  }
   
+  .subheader,
+  .countries.home,
+  .country.details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .subheader {
+    align-items: flex-start;
+  }
+
+  .countries.home {
+    align-items: center;
+  }
+
+  .search,
+  .dropbtn {
+    margin: 12px;
+    margin-bottom: 0;
+  }
+
+  .search,
+  .flag,
+  .info {
+    width: 85%;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  .info {
+    margin: 2rem auto;
+  }
+
+  thead th:not(:first-child) {
+    display: none;
+  }
+
+  td, th {
+      display: block;
+  }
+
+  td[data-th]:before  {
+      content: attr(data-th);
+  }
+
 }
